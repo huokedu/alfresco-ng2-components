@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+CLIDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+export SKIPINSTALL="-si"
+$CLIDIR/adf "$@"

@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+CLIDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+. $CLIDIR/.cli-variables
+. $CLIDIR/.cli-helpers
+
+show_help() {
+    echo "Usage: adf[f][f] commanda [component name without prefix] [gitjsapi commit-ish]"
+    echo ""
+    echo "Commands:"
+    echo "help - show this help"
+    echo "ls - show available components"
+    echo "demo - start demo shell with local components"
+    echo "build - build package(s)"
+    echo "test - test package(s)"
+    echo "debug - run package test in browser to be able to debug"
+}
+
+show_components() {
+    echo "Available components:"
+    echo "====================="
+    ls $SCRIPTSDIR/../ng2-components/ | grep ng2 | sed 's/^ng2-//'
+    echo ""
+}
+
+run_demo() {
+    $SCRIPTSDIR/start.sh $SKIPINSTALL -dev
+}
+
+run_build() {
+    local component=""
+    local gitish=""
+
+    if ( _is_component $1 == true ); then
+        component="ng2-$1"
+        shift
+    fi
+
+    if [ "$1" != "" ]; then 
+        gitish="-gitjsapi $1"
+        shift
+    fi
+
+    $SCRIPTSDIR/npm-build-all.sh $SKIPINSTALL $SKIPBUILD $component
+}
+
+run_tests() {
+    local component=""
+    local gitish=""
+
+    if ( _is_component $1 == true ); then
+        component="ng2-$1"
+        shift
+    fi
+
+    if [ "$1" != "" ]; then 
+        gitish="-gitjsapi $1"
+        shift
+    fi
+
+    $SCRIPTSDIR/npm-build-all.sh $SKIPINSTALL $SKIPBUILD -t $gitish $component
+}
+
+run_browser_tests() {
+    echo 'browser test to be run'
+}
+
+case "$1" in
+    help) show_help; exit 0;;
+    ls) show_components; exit 0;;
+    demo) shift; run_demo "$@";;
+    build) shift; run_build "$@";;
+    test) shift; run_tests "$@";;
+    debug) shift; run_browser_tests "$@";;
+    *) echo "invalid command $1" 1>&2; show_help; exit 1;;
+esac

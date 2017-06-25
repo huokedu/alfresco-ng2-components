@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+SCRIPTSDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+COMPONENTS=(`ls $SCRIPTSDIR/../ng2-components/ | grep ng2 | sed 's/^ng2-//' | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n/ /g'`)

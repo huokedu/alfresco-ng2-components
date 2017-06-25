@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+_array_contains () {
+    local seeking=$1; shift
+    local in=1
+    for element; do
+        if [[ $element == $seeking ]]; then
+            in=0
+            break
+        fi
+    done
+    return $in
+}
+
+_is_component() {
+    local component=$1
+    local components="${COMPONENTS[@]}"
+
+    if [ "$component" == "" ] || [ "$component" == "==" ]; then
+        return 1;
+    fi
+
+    if ( _array_contains $component $components == true ); then
+        return 0
+    else
+        return 1
+    fi
+}
