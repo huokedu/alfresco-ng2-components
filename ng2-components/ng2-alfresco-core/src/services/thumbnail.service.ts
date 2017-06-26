@@ -16,10 +16,10 @@
  */
 
 import { Injectable } from '@angular/core';
-import { AlfrescoContentService } from 'ng2-alfresco-core';
+import { AlfrescoContentService } from './alfresco-content.service';
 
 @Injectable()
-export class AlfrescoThumbnailService {
+export class ThumbnailService {
 
     mimeTypeIcons: any = {
         'image/png': 'ft_ic_raster_image',

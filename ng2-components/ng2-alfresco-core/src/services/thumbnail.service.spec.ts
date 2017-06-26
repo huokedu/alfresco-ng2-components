@@ -16,12 +16,12 @@
  */
 
 import { TestBed, async } from '@angular/core/testing';
-import { AlfrescoThumbnailService } from './alfresco-thumbnail.service';
+import { ThumbnailService } from './thumbnail.service';
 import { CoreModule } from 'ng2-alfresco-core';
 
-describe('AlfrescoThumbnailService', () => {
+describe('ThumbnailService', () => {
 
-    let service: AlfrescoThumbnailService;
+    let service: ThumbnailService;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -29,13 +29,13 @@ describe('AlfrescoThumbnailService', () => {
                 CoreModule.forRoot()
             ],
             providers: [
-                AlfrescoThumbnailService
+                ThumbnailService
             ]
         }).compileComponents();
     }));
 
     beforeEach(() => {
-        service = TestBed.get(AlfrescoThumbnailService);
+        service = TestBed.get(ThumbnailService);
     });
 
     it('should return the correct icon for a plain text file', () => {

@@ -19,7 +19,7 @@ import { Component, ElementRef, EventEmitter, Input, OnInit, OnChanges, Output, 
 import { AlfrescoTranslationService } from 'ng2-alfresco-core';
 import { MinimalNodeEntity } from 'alfresco-js-api';
 import { AlfrescoSearchService, SearchOptions } from './../services/alfresco-search.service';
-import { AlfrescoThumbnailService } from './../services/alfresco-thumbnail.service';
+import { ThumbnailService } from 'ng2-alfresco-core';
 
 declare var require: any;
 
@@ -71,7 +71,7 @@ export class AlfrescoSearchAutocompleteComponent implements OnInit, OnChanges {
 
     constructor(private searchService: AlfrescoSearchService,
                 private translateService: AlfrescoTranslationService,
-                private thumbnailService: AlfrescoThumbnailService) {
+                private thumbnailService: ThumbnailService) {
     }
 
     ngOnInit(): void {
