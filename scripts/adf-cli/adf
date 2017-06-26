@@ -58,7 +58,7 @@ run_tests() {
         shift
     fi
 
-    $SCRIPTSDIR/npm-build-all.sh $SKIPINSTALL $SKIPBUILD -t $gitish $component
+    $SCRIPTSDIR/npm-build-all.sh $SKIPINSTALL $SKIPBUILD -t $component $gitish
 }
 
 run_browser_tests() {
