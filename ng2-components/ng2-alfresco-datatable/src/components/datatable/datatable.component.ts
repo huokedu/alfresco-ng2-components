@@ -15,7 +15,10 @@
  * limitations under the License.
  */
 
-import { Component, OnChanges, DoCheck, IterableDiffers, SimpleChange, SimpleChanges, Input, Output, EventEmitter, ElementRef, TemplateRef, AfterContentInit, ContentChild, Optional } from '@angular/core';
+import {
+    Component, OnChanges, DoCheck, IterableDiffers, SimpleChange, SimpleChanges, Input,
+    Output, EventEmitter, ElementRef, TemplateRef, AfterContentInit, ContentChild, Optional
+} from '@angular/core';
 import { DataTableAdapter, DataRow, DataColumn, DataSorting, DataRowEvent, ObjectDataTableAdapter, ObjectDataRow } from '../../data/index';
 import { DataCellEvent } from './data-cell.event';
 import { DataRowActionEvent } from './data-row-action.event';
@@ -100,9 +103,12 @@ export class DataTableComponent implements AfterContentInit, OnChanges, DoCheck 
 
     private differ: any;
 
-    constructor(@Optional() private el: ElementRef,
+    constructor(
+        @Optional() private el: ElementRef,
         private differs: IterableDiffers) {
-        this.differ = differs.find([]).create(null);
+        if (differs) {
+            this.differ = differs.find([]).create(null);
+        }
         this.click$ = new Observable<DataRowEvent>(observer => this.clickObserver = observer).share();
     }
 
@@ -148,7 +154,7 @@ export class DataTableComponent implements AfterContentInit, OnChanges, DoCheck 
     }
 
     ngDoCheck() {
-        var changes = this.differ.diff(this.rows);
+        let changes = this.differ.diff(this.rows);
         if (changes) {
             this.setTableRows(this.rows);
         }
