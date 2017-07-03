@@ -1,10 +1,10 @@
-<alfresco-document-menu-action
+<adf-document-menu-action
     *ngIf="creationMenuActions"
     [folderId]="currentFolderId"
     (success)="onActionMenuSuccess($event)"
     (error)="onActionMenuError($event)"
     (permissionErrorEvent)="onPermissionError($event)">
-</alfresco-document-menu-action>
+</adf-document-menu-action>
 <alfresco-datatable
     [selectionMode]="selectionMode"
     [data]="data"

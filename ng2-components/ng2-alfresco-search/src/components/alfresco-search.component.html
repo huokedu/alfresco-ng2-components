@@ -2,7 +2,7 @@
      class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width">
     <p data-automation-id="search_error_message" *ngIf="errorMessage">{{ 'SEARCH.RESULTS.ERROR' | translate:{errorMessage: errorMessage} }}</p>
     <div class="container">
-        <alfresco-document-list
+        <adf-document-list
             [node]="nodeResults"
             [contextMenuActions]="true"
             [creationMenuActions]="false"
@@ -64,7 +64,7 @@
                     handler="delete">
                 </content-action>
             </content-actions>
-        </alfresco-document-list>
+        </adf-document-list>
         <alfresco-pagination
             (changePageSize)="onChangePageSize($event)"
             (nextPage)="onNextPage($event)"

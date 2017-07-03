@@ -13,11 +13,11 @@
             <md-icon *ngIf="showHeaderContent">expand_less</md-icon>
             <span>{{taskDetails.name || 'No name'}}</span>
         </h2>
-        <activiti-task-header *ngIf="showHeaderContent"
+        <adf-task-header *ngIf="showHeaderContent"
             [taskDetails]="taskDetails"
             [formName]="taskFormName"
             (claim)="onClaimTask($event)">
-        </activiti-task-header>
+        </adf-task-header>
         <div *ngIf="showHeaderContent" class="mdl-grid">
             <div *ngIf="showInvolvePeople" class="mdl-cell mdl-cell--4-col">
                 <button type="button" md-button md-raised-button (click)="showPeopleDialog()">{{'TASK_DETAILS.LABELS.INVOLVED_PEOPLE'|translate}}</button>

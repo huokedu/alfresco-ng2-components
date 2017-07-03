@@ -19,7 +19,7 @@ import { Component, ElementRef, Input, Output, EventEmitter } from '@angular/cor
 import { DiagramColorService } from '../../services/diagram-color.service';
 
 @Component({
-    selector: 'diagram-icon-alfresco-publish-task',
+    selector: 'diagram-icon-adf-publish-task, diagram-icon-alfresco-publish-task',
     templateUrl: './diagram-icon-alfresco-publish-task.component.html'
 })
 export class DiagramIconAlfrescoPublishTaskComponent {

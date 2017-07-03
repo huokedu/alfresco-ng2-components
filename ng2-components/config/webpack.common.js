@@ -35,7 +35,8 @@ module.exports = {
         alias: {
             "file-multi-loader": path.resolve(__dirname, "./custom-loaders/file-loader-multi"),
             "license-check": path.resolve(__dirname, "./custom-loaders/license-check"),
-            "generate-list-component-loader": path.resolve(__dirname, "./custom-loaders/generateListComponent")
+            "generate-list-component-loader": path.resolve(__dirname, "./custom-loaders/generateListComponent"),
+                        "find-component-loader": path.resolve(__dirname, "./custom-loaders/sanatize")
         }
     },
 
@@ -94,6 +95,11 @@ module.exports = {
             {
                 test: /\.html$/,
                 loader: 'html-loader',
+                exclude: [/node_modules/, /bundles/, /dist/, /demo/]
+            },
+            {
+                test: /\.ts/,
+                loader: 'find-component-loader',
                 exclude: [/node_modules/, /bundles/, /dist/, /demo/]
             },
             {
